@@ -1,10 +1,23 @@
 <template>
   <main>
-    <div class="welcome">
-      <img src="../assets/logo.webp" alt="Cider Logo">
-      <h1>Cider Collective</h1>
-      <h5>A bridge, not a barrier</h5>
-<!--      <h5>We're a development group focused to changing the direction of the music industry to be more directionalized towards the general community and the consumers of music themselves</h5>-->
+    <div id="scrolldiv"></div>
+    <div id="content1">
+      <div id="welcome">
+        <img src="../assets/logo.webp" alt="Cider Logo" id="logo">
+        <h1 id="title">Cider Collective</h1>
+        <h5 id="slogan" class="hide">A bridge, not a barrier</h5>
+  <!--      <h5>We're a development group focused to changing the direction of the music industry to be more directionalized towards the general community and the consumers of music themselves</h5>-->
+      </div>
+    </div>
+    <div id="content2">
+      <div class="about">
+        <h1>About Us</h1>
+        <p>Born from the humble beginnings of an indie project christened as Apple Music Electron, we dared to dream, to defy, and to innovate. Our initial vision? To breathe life into an open-source client for Apple Music - one that was not shackled by Apple's constrained ecosystem, offering the breath of freedom users so rightly deserved. Over time, our aspirations grew and metamorphosed into a bigger and bolder endeavor - the birth of Cider.</p>
+      </div>
+      <div class="projects">
+        <h1>Projects</h1>
+
+      </div>
     </div>
   </main>
 </template>
@@ -13,14 +26,58 @@
 import {defineComponent} from 'vue'
 
 export default defineComponent({
-  name: "Home"
+  name: "Home",
+  created () {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  unmounted () {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
+  methods: {
+    handleScroll(e) {
+      let viewHeight = window.innerHeight;
+
+      if (window.scrollY > viewHeight / 2) {
+        document.getElementById("logo").classList.add("hide");
+        document.getElementById("logo").style.height = "0px";
+        document.getElementById("logo").style.width = "0px";
+      } else {
+        document.getElementById("logo").classList.remove("hide");
+        document.getElementById("logo").style.height = "200px";
+        document.getElementById("logo").style.width = "200px";
+      }
+
+      if (window.scrollY > viewHeight) {
+        document.getElementById("slogan").classList.remove("hide");
+      } else {
+        document.getElementById("slogan").classList.add("hide");
+      }
+
+      if (window.scrollY > viewHeight * 2) {
+        document.getElementById("content1").style.position = "absolute";
+        document.getElementById("content1").style.top = viewHeight * 2 + "px";
+      } else {
+        document.getElementById("content1").style.position = "fixed";
+        document.getElementById("content1").style.top = "0px";
+      }
+    }
+  }
 })
 </script>
 
 <style lang="scss" scoped>
-main {
+#scrolldiv {
+  height: 600vh;
+}
+
+#content1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   font-family: Mona Sans,Mona Sans Header Fallback,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
-  .welcome {
+  #welcome {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,16 +85,61 @@ main {
     height: 100vh;
     color: white;
     font-size: 1.5rem;
-    img {
+    transition: all 0.5s ease;
+    #logo {
       width: 200px;
+      transition: all 0.5s ease;
     }
-    h1 {
+    #title {
       font-weight: bolder;
+      transition: all 0.5s ease;
     }
-    h5 {
+    #slogan {
       font-weight: normal;
+      transition: all 0.5s ease;
       margin: 0;
     }
   }
+}
+
+#content2 {
+  position: absolute;
+  top: 300vh;
+  width: 100vw;
+  height: 100vh;
+  font-family: Mona Sans,Mona Sans Header Fallback,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+  color: white;
+  .about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-size: 1.5rem;
+    text-align: center;
+    h1 {
+      font-weight: bolder;
+    }
+    p {
+      width: 50%;
+      font-size: 1.3rem;
+    }
+  }
+  .projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-size: 1.5rem;
+    text-align: center;
+    h1 {
+      font-weight: bolder;
+    }
+  }
+}
+
+.hide {
+  opacity: 0;
 }
 </style>
