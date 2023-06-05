@@ -6,15 +6,14 @@
         <img src="../assets/logo.webp" alt="Cider Logo" id="logo">
         <h1 id="title">Cider Collective</h1>
         <h5 id="slogan" class="hide">A bridge, not a barrier</h5>
-  <!--      <h5>We're a development group focused to changing the direction of the music industry to be more directionalized towards the general community and the consumers of music themselves</h5>-->
       </div>
     </div>
     <div id="content2">
-      <div class="about">
+      <div id="about">
         <h1>About Us</h1>
         <p>Born from the humble beginnings of an indie project christened as Apple Music Electron, we dared to dream, to defy, and to innovate. Our initial vision? To breathe life into an open-source client for Apple Music - one that was not shackled by Apple's constrained ecosystem, offering the breath of freedom users so rightly deserved. Over time, our aspirations grew and metamorphosed into a bigger and bolder endeavor - the birth of Cider.</p>
       </div>
-      <div class="projects">
+      <div id="projects">
         <h1>Projects</h1>
 
       </div>
@@ -109,7 +108,7 @@ export default defineComponent({
   height: 100vh;
   font-family: Mona Sans,Mona Sans Header Fallback,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
   color: white;
-  .about {
+  #about {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -125,7 +124,7 @@ export default defineComponent({
       font-size: 1.3rem;
     }
   }
-  .projects {
+  #projects {
     display: flex;
     flex-direction: column;
     align-items: center;
