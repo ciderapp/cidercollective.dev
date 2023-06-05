@@ -1,5 +1,10 @@
 <template>
-
+  <main>
+    <div class="welcome">
+      <img src="../assets/logo.webp" alt="Cider Logo">
+      <h1>Cider Collective</h1>
+    </div>
+  </main>
 </template>
 
 <script>
@@ -10,6 +15,18 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+main {
+  .welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 100px);
+    color: white;
+    img {
+      width: 200px;
+    }
+  }
+}
 </style>
