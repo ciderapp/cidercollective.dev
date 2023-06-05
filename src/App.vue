@@ -23,6 +23,7 @@ body {
 
 <style lang="scss" scoped>
 header {
+  position: absolute;
   .wrapper {
     nav {
       display: flex;
