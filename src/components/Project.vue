@@ -41,22 +41,25 @@ export default defineComponent({
     z-index: 1000;
     width: 100%;
     height: 100%;
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    transition: all 0.5s ease;
+    opacity: 0;
     .bottom {
       position: absolute;
       bottom: 0;
       left: 0;
       width: 100%;
-      padding: 1rem;
-      background-color: rgba(0, 0, 0, 0.5);
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;
-      transition: all 0.3s ease;
+      transition: all 0.5s ease;
       opacity: 0;
+      text-align: center;
     }
   }
   // On hover change the opacity of the details
   &:hover {
     .details {
+      opacity: 1;
       .bottom {
         opacity: 1;
       }
