@@ -19,6 +19,33 @@ import { RouterLink, RouterView } from 'vue-router'
   <RouterView />
 </template>
 
+<script>
+export default {
+  mounted() {
+    let lastTouchTime = 0
+
+    function enableHover() {
+      if (new Date() - lastTouchTime < 500) return
+      document.body.classList.add('hasHover')
+    }
+
+    function disableHover() {
+      document.body.classList.remove('hasHover')
+    }
+
+    function updateLastTouchTime() {
+      lastTouchTime = new Date()
+    }
+
+    document.addEventListener('touchstart', updateLastTouchTime, true)
+    document.addEventListener('touchstart', disableHover, true)
+    document.addEventListener('mousemove', enableHover, true)
+
+    enableHover()
+  }
+}
+</script>
+
 <style lang="scss">
 html {
   scroll-behavior: smooth;
@@ -48,7 +75,7 @@ header {
         transition: all 0.3s ease;
         text-decoration: underline rgb(255, 38, 84, 0) 2px wavy;
         text-underline-offset: -0.1rem;
-        &:hover {
+        body.hasHover  &:hover {
           text-decoration-color: rgb(255, 38, 84, 1);
           text-underline-offset: 0.3rem;
         }

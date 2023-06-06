@@ -58,7 +58,7 @@ export default defineComponent({
     }
   }
   // On hover change the opacity of the details
-  &:hover {
+  body.hasHover &:hover {
     transform: scale(1.05);
     .details {
       opacity: 1;
