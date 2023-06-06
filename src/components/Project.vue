@@ -1,5 +1,5 @@
 <template>
-  <a class="project" :href="link">
+  <a class="project" :href="link" target="_blank">
     <img :src="'/' + image" alt="Project Image">
     <div class="details">
       <div class="bottom">
@@ -58,6 +58,7 @@ export default defineComponent({
   }
   // On hover change the opacity of the details
   &:hover {
+    transform: scale(1.05);
     .details {
       opacity: 1;
       .bottom {
