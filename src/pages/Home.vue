@@ -1,6 +1,11 @@
 <template>
   <main>
     <div id="scrolldiv"></div>
+    <div id="scrollformore">
+      <a href="#about">
+        Scroll for more
+      </a>
+    </div>
     <div id="content1">
       <div id="welcome">
         <img src="../assets/logo.webp" alt="Cider Logo" id="logo">
@@ -44,11 +49,39 @@ export default defineComponent({
   unmounted () {
     window.removeEventListener('scroll', this.handleScroll);
   },
+  mounted () {
+    setTimeout(() => {
+      this.bounceScrollDiv();
+      setInterval(this.bounceScrollDiv, 4000);
+    }, 1000);
+  },
   methods: {
+    bounceScrollDiv() {
+      // Bounce scroll for more
+      document.getElementById("scrollformore").style.transform = "translateY(15px)";
+      setTimeout(() => {
+        document.getElementById("scrollformore").style.transform = "translateY(0px)";
+        setTimeout(() => {
+          document.getElementById("scrollformore").style.transform = "translateY(15px)";
+          setTimeout(() => {
+            document.getElementById("scrollformore").style.transform = "translateY(0px)";
+          }, 500);
+        }, 500);
+      }, 500);
+    },
     handleScroll(e) {
       let viewHeight = window.innerHeight;
+      console.log(window.scrollY)
+      if (window.scrollY <= 1) {
+        document.getElementById("content1").style.position = "absolute";
+        document.getElementById("scrollformore").classList.remove("hide");
+        return;
+      } else {
+        document.getElementById("content1").style.position = "fixed";
+        document.getElementById("scrollformore").classList.add("hide");
+      }
 
-      if (window.scrollY > viewHeight / 2) {
+      if (window.scrollY > viewHeight / 4) {
         document.getElementById("logo").classList.add("hide");
         document.getElementById("logo").style.height = "0px";
         document.getElementById("logo").style.width = "0px";
@@ -162,6 +195,32 @@ export default defineComponent({
         grid-template-columns: 1fr;
       }
     }
+  }
+}
+
+#scrollformore {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: white;
+  font-weight: bolder;
+  background-color: transparent;
+  transition: opacity 0.2s ease, transform 0.5s ease;
+  cursor: pointer;
+  z-index: 100;
+  font-family: Mona Sans,Mona Sans Header Fallback,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+  body.hasHover &:hover {
+    background-color: #333333;
+  }
+  a {
+    color: white;
+    text-decoration: none;
   }
 }
 
