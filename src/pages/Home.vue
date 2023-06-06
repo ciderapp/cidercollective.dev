@@ -135,6 +135,11 @@ export default defineComponent({
       width: 50%;
       font-size: 1.3rem;
     }
+    @media (max-width: 768px) {
+      p {
+        width: 90%;
+      }
+    }
   }
   #projects {
     display: flex;
@@ -153,6 +158,9 @@ export default defineComponent({
       grid-gap: 40px;
       width: 90%;
       margin-top: 20px;
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
     }
   }
 }
