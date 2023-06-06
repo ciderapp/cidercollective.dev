@@ -15,7 +15,17 @@
       </div>
       <div id="projects">
         <h1>Projects</h1>
-
+        <div id="projects-grid">
+          <Project image="ciderproject.png">
+            <h4>Apple Music Electron</h4>
+          </Project>
+          <Project image="ciderproject.png">
+            <h4>Cider</h4>
+          </Project>
+          <Project image="ciderproject.png">
+            <h4>Cider 2</h4>
+          </Project>
+        </div>
       </div>
     </div>
   </main>
@@ -23,9 +33,11 @@
 
 <script>
 import {defineComponent} from 'vue'
+import Project from "@/components/Project.vue";
 
 export default defineComponent({
   name: "Home",
+  components: {Project},
   created () {
     window.addEventListener('scroll', this.handleScroll);
   },
@@ -134,6 +146,13 @@ export default defineComponent({
     text-align: center;
     h1 {
       font-weight: bolder;
+    }
+    #projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 40px;
+      width: 90%;
+      margin-top: 20px;
     }
   }
 }
