@@ -1,12 +1,12 @@
 <template>
-  <div class="project">
+  <a class="project" :href="link">
     <img :src="'/' + image" alt="Project Image">
     <div class="details">
       <div class="bottom">
         <slot></slot>
       </div>
     </div>
-  </div>
+  </a>
 </template>
 
 <script>
@@ -15,7 +15,8 @@ import {defineComponent} from 'vue'
 export default defineComponent({
   name: "Project",
   props: {
-    image: String
+    image: String,
+    link: String
   }
 })
 </script>
@@ -23,6 +24,9 @@ export default defineComponent({
 <style scoped lang="scss">
 .project {
   position: relative;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
   img {
     width: 100%;
     height: 100%;
@@ -38,7 +42,7 @@ export default defineComponent({
     width: 100%;
     height: 100%;
     .bottom {
-position: absolute;
+      position: absolute;
       bottom: 0;
       left: 0;
       width: 100%;
@@ -48,7 +52,12 @@ position: absolute;
       border-bottom-right-radius: 10px;
       transition: all 0.3s ease;
       opacity: 0;
-      &:hover {
+    }
+  }
+  // On hover change the opacity of the details
+  &:hover {
+    .details {
+      .bottom {
         opacity: 1;
       }
     }

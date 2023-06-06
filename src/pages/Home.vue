@@ -16,13 +16,13 @@
       <div id="projects">
         <h1>Projects</h1>
         <div id="projects-grid">
-          <Project image="ciderproject.png">
+          <Project image="ciderproject.png" link="https://github.com/ciderapp/Apple-Music-Electron">
             <h4>Apple Music Electron</h4>
           </Project>
-          <Project image="ciderproject.png">
+          <Project image="ciderproject.png" link="https://cider.sh/classic">
             <h4>Cider</h4>
           </Project>
-          <Project image="ciderproject.png">
+          <Project image="ciderproject.png" link="https://cider.sh/">
             <h4>Cider 2</h4>
           </Project>
         </div>
