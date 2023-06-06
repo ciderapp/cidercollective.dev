@@ -27,6 +27,7 @@ export default defineComponent({
   cursor: pointer;
   color: white;
   text-decoration: none;
+  transition: all 0.5s ease;
   img {
     width: 100%;
     height: 100%;
